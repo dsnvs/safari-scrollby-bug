@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demonstrating a Safari bug within element.scrollBy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <h1>Issue: element.scrollBy is broken when using behavior: 'smooth'</h1>
+        <p>It seems like the problem only happens when a <code>element.ScrollBy</code> with
+            <code>behavior: 'smooth'</code> is used on an element with CSS attribute <code>overflow</code> (or
+            <code>overflow-x</code>) set to <code>hidden</code></p>
+
+        <h3>Confirmed on: </h3>
+        <ul>
+            <li>Safari for macOS Version 15.4 (17613.1.17.1.13)</li>
+        </ul>
+
+        <section class="broken">
+            <h2>scrollBy when using the <code>behavior: 'smooth'</code> and <code>overflow: hidden</code></h2>
+            <div class="scroller" id="smooth">
+                <div class="scroll-item item-1"></div>
+                <div class="scroll-item item-2"></div>
+                <div class="scroll-item item-3"></div>
+            </div>
+            <div class="scroller-controls">
+                <button data-action="prev" data-scroller="smooth" data-behavior="smooth">Prev</button>
+                <button data-action="next" data-scroller="smooth" data-behavior="smooth">Next</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>scrollBy when using the <code>behavior: 'smooth'</code> and <code>overflow: scroll</code></h2>
+            <div class="scroller scroller-with-scrollbar" id="smooth-2">
+                <div class="scroll-item item-1"></div>
+                <div class="scroll-item item-2"></div>
+                <div class="scroll-item item-3"></div>
+            </div>
+            <div class="scroller-controls">
+                <button data-action="prev" data-scroller="smooth-2" data-behavior="smooth">Prev</button>
+                <button data-action="next" data-scroller="smooth-2" data-behavior="smooth">Next</button>
+            </div>
+        </section>
+        <section>
+            <h2>scrollBy when using the <code>behavior: 'instant'</code> and <code>overflow: hidden</code></h2>
+            <div class="scroller" id="instant">
+                <div class="scroll-item item-1"></div>
+                <div class="scroll-item item-2"></div>
+                <div class="scroll-item item-3"></div>
+            </div>
+            <div class="scroller-controls">
+                <button data-action="prev" data-scroller="instant" data-behavior="instant">Prev</button>
+                <button data-action="next" data-scroller="instant" data-behavior="instant">Next</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>scrollBy when using the <code>behavior: 'auto'</code> and <code>overflow: hidden</code></h2>
+            <div class="scroller" id="auto">
+                <div class="scroll-item item-1"></div>
+                <div class="scroll-item item-2"></div>
+                <div class="scroll-item item-3"></div>
+            </div>
+            <div class="scroller-controls">
+                <button data-action="prev" data-scroller="auto" data-behavior="auto">Prev</button>
+                <button data-action="next" data-scroller="auto" data-behavior="auto">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/dsnvs/homepage">Source files</a> |
+            <a href="https://jsfiddle.net/dsnvs/goradz7c/">Fiddle</a> |
+            <a href="https://dsnvs.com">Made by Daniel Novaes</a>
+        </div>
+    </footer>
+</body>
+
+</html>
